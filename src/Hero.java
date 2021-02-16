@@ -1,5 +1,3 @@
-package com.company;
-
 import java.math.RoundingMode;
 import java.util.Random;
 
