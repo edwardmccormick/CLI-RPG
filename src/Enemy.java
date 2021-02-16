@@ -1,5 +1,3 @@
-package com.company;
-
 import java.util.Random;
 
 import static java.lang.StrictMath.round;
