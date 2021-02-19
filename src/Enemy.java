@@ -4,8 +4,8 @@ import static java.lang.StrictMath.round;
 
 public class Enemy {
     public String name = "The Dirty Kobold Hrawak";
-    public double hitpoints = 20;
-    public double hitpointsmax = 20;
+    public double hitpoints = 80;
+    public double hitpointsmax = 80;
     public double energy = 2;
     public double maxEnergy = 2;
     public boolean isExhausted = false;
@@ -18,7 +18,7 @@ public class Enemy {
         }
         Random attack = new Random();
         this.energy--;
-        return attack.nextInt(5);
+        return attack.nextInt(11);
     }
 
        public String narrateAttack(int damage) {

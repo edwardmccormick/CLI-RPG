@@ -1,4 +1,7 @@
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 
 import static java.lang.StrictMath.round;
@@ -19,10 +22,11 @@ public class Hero {
     public boolean isPrepared = false;
     public boolean isExhausted = false;
     public int maxNormalDamage = 11;
+    public ArrayList<String> inventory = new ArrayList<>(Arrays.asList("Health Potion", "Health Potion", "Dagger"));
 
 
     public double standardAttack() {
-        if (energy <= 0) {
+        if (this.energy <= 0) {
             System.out.println("You're exhausted and cannot attack this round!");this.energy = maxEnergy;
         }
         Random attack = new Random();
@@ -93,4 +97,37 @@ public class Hero {
     public String checkStatus() {
         return this.name + " has " + (int)this.hitpoints + " hitpoints left of " + (int)this.hitpointsmax + " hitpoints maximum, and has " + (int)this.energy + " energy left.";
     }
+
+    public String healthPotion() {
+        if (inventory.contains("Health Potion")) {
+            inventory.remove("Health Potion");
+            changeHP(50);
+            return "You uncork a health potion and pour it into your mouth. As you swallow a healing warmth radiates out from your stomach to your entire body, and you are healed.";
+        }
+        else {
+            return "You don't seem to have a health potion in your inventory.";
+        }
+    }
+
+    public int healthPotionCount() {
+        if (!inventory.contains("Health Potion")) {
+            return 0;
+        } else {
+            return Collections.frequency(inventory, "Health Potions");
+        }
+    }
+
+    public void useDagger() {
+        String currentWeapon = this.weapon;
+        this.weapon = "dagger";
+        System.out.println("You pull your dagger from the sheath at your waist. No offense to " + currentWeapon + " but sometimes you want to dance with who brought you.");
+        System.out.println("Your previous maximum damage was " + (this.maxNormalDamage-1) + "; your new maximum damage is 10.");
+        this.maxNormalDamage = 11;
+    }
+
+    public void useSword() {
+        this.maxNormalDamage = 21;
+    }
+
+
  }
