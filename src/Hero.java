@@ -167,6 +167,19 @@ public class Hero {
             System.out.println("Your previous maximum damage was " + (this.maxNormalDamage - 1) + "; your new maximum damage is 20.");
             this.maxNormalDamage = 21;
         }
+        else {System.out.println("You don't have a sword in your inventory. How'd you manage that?");}
+    }
+
+    public void useExcaliber() {
+        if (inventory.contains("Excaliber")) {
+            String currentWeapon = this.weapon;
+            this.weapon = "Excaliber";
+            System.out.println("You pull Excaliber out of its finely worked scabbard. It seems to gleam - whether from the fineness of the art engraved on its face, or from the prophecy the surrounds it. It is a fine upgrade over your " + currentWeapon + ".");
+            System.out.println("Your previous maximum damage was " + (this.maxNormalDamage - 1) + "; your new maximum damage is 20.");
+            this.maxNormalDamage = 21;
+        } else {
+            System.out.println("You don't have possession of Excalibur yet.");
+        }
     }
 }
 
